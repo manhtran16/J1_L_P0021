@@ -34,20 +34,21 @@ public class Validate {
      * @param max    The maximum value.
      * @return The valid integer.
      */
-    public static int getInt(String prompt, int min, int max) {
-        while (true) {
+    public static int getInt(String messageInfo,String messsageErrorOutOfRange,
+            String messageErrorNumber,int min,int max){
+        do {            
             try {
-                System.out.print(prompt);
-                int number = Integer.parseInt(sc.nextLine().trim());
-                if (number >= min && number <= max) {
+                System.out.print(messageInfo);
+                int number = Integer.parseInt(SCANNER.nextLine());
+                if(number>=min&&number<=max){
                     return number;
-                } else {
-                    System.out.println("Number out of range (" + min + " to " + max + ").");
+                }else{
+                    System.out.println(messsageErrorOutOfRange);
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number. Please try again.");
+                System.out.println(messageErrorNumber);
             }
-        }
+        } while (true);
     }
 
     /**
